@@ -28,6 +28,7 @@
 body {
   font-family: var(--font-family-primary);
   font-weight: var(--font-weight-bold);
+  background-color: var(--color-grey-200);
 }
 
 input {
@@ -35,7 +36,7 @@ input {
 }
 main {
   height: 100vh;
-  background-color: var(--color-grey-200);
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,7 +118,7 @@ input:focus {
 span {
   display: inline-block;
   margin: 1em;
-  transform: translate(-7em);
+  transform: translate(-5em);
   color: var(--color-green-400);
 }
 p {
@@ -136,8 +137,18 @@ p {
 .total :nth-child(3):hover {
   cursor: pointer;
 }
-@media screen and (max-width: 53em) {
+@media screen and (max-width: 55em) {
   .content {
-    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    width: 80%;
+    height: 70%;
+    gap: 0em;
+  }
+  .bill {
+    width: 65%;
+    justify-content: center;
+    align-items: center;
+  }
+  .total {
+    width: 85%;
   }
 }
