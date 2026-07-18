@@ -18,7 +18,7 @@
         <div class="bill">
           <div>
             <label for="bill"> Bill </label>
-            <input name="number" type="text" placeholder="$" id="bill" />
+            <input name="number" type="number" placeholder="$" id="bill" required />
           </div>
           <h2>select tip %</h2>
           <div class="select-tip">
@@ -27,7 +27,7 @@
             <button type="button" class="btn" value="15">15%</button>
             <button type="button" class="btn" value="25">25%</button>
             <button type="button" class="btn" value="50">50%</button>
-            <input type="text" class="" id="custom" placeholder="custom" />
+            <input type="number" class="" id="custom" placeholder="custom" />
           </div>
           <div>
             <label for="numOfPeople"> number of people</label>
@@ -36,6 +36,7 @@
               name="numberPeople"
               id="numOfPeople"
               placeholder="👤"
+              required
             />
           </div>
         </div>

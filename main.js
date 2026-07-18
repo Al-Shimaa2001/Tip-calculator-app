@@ -1,13 +1,15 @@
 const bill = document.querySelector("#bill");
 const tipsBtn = document.querySelectorAll("button.btn");
+const customTips = document.querySelector("#custom");
 const numOfPeople = document.querySelector("#numOfPeople");
 const tipsForOnePerson = document.querySelector(".tipAmount");
 const personTotal = document.querySelector(".personTotal");
-
+const reset = document.querySelector(".reset");
 let billValue = 0;
 let tipAmount = 0;
 let totalAmount = 0;
 let numPeople = 0;
+
 function handleGetBillValue() {
   bill.addEventListener("keyup", () => {
     billValue = Number(bill.value) || 0;
@@ -17,14 +19,23 @@ function handleGetBillValue() {
 handleGetBillValue();
 
 const calculateTips = () => {
-  tipsBtn.forEach((e) => {
-    e.addEventListener("click", () => {
-      const tipPercentage = Number(e.value);
-      tipAmount = billValue * (tipPercentage / 100);
+  if (tipsBtn) {
+    tipsBtn.forEach((e) => {
+      e.addEventListener("click", () => {
+        const tipPercentage = Number(e.value);
+        tipAmount = billValue * (tipPercentage / 100);
+        totalAmount = billValue + tipAmount;
+      });
+    });
+  }
+  if (customTips) {
+    customTips.addEventListener("keyup", () => {
+      const customTipsPercentage = Number(customTips.value);
+      tipAmount = billValue * (customTipsPercentage / 100);
       totalAmount = billValue + tipAmount;
     });
-    return (tipAmount, totalAmount);
-  });
+  }
+  return (tipAmount, totalAmount);
 };
 
 calculateTips();
@@ -40,9 +51,12 @@ const numberOfPeople = () => {
   });
 };
 numberOfPeople();
-const reset = document.querySelector(".reset");
+
 const handelReset = () => {
   reset.addEventListener("click", () => {
+    bill.value = "";
+    numOfPeople.value = "";
+    customTips.value = "";
     tipsForOnePerson.innerHTML = "$0.00";
     personTotal.innerHTML = "$0.00";
   });
